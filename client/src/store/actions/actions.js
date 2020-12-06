@@ -9,6 +9,12 @@ export const resetWeb = () => ({
     type: "RESET"
 })
 
+export const resetData = () => {
+    return dispatch => {
+        return dispatch(resetWeb())
+    }
+}
+
 export const fetchData = (formData) => {
     return dispatch => {
         return dispatch(setWeb(formData))

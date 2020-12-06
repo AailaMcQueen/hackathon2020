@@ -1,39 +1,40 @@
 import React from "react"
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 
-class Navbar extends React.Component {
-    render(){
-        const style = {
-            justifyContent: "space-between"
-        }
+export default class NavbarTest extends React.Component {
+    render() {
         return (
-            <nav className="navbar navbar-expand navbar-dark bg-dark">
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <NavLink className="navbar-brand" to="/">Visualization</NavLink>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div style={style} className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <div className="navbar-header">
-                            <Link to="/" className="navbar-brand">
-                                Visualization
-                            </Link>
-                        </div>
-                        <div className="right-sided-links">
-                            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                                <li className="nav-item nav-link">
-                                    <Link to="/allocation">Allocation</Link>
-                                </li>
-                                <li className="nav-item nav-link">
-                                    <Link to="/aggregate">Aggregate</Link>
-                                </li>
-                                <li className="nav-item nav-link">
-                                    <Link to="/map">Map</Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
+                <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li className="nav-item">
+                            <NavLink activeClassName="active" exact className="nav-link" to="/">
+                                Provide Data! 
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink activeClassName="active" exact className="nav-link" to="/allocation">
+                                Allocation 
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink activeClassName="active" exact className="nav-link" to="/aggregate">
+                                Aggregate 
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink activeClassName="active" exact className="nav-link" to="/map">
+                                Map 
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         )
     }
 }
-
-export default Navbar;

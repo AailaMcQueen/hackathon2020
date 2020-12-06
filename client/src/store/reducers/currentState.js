@@ -6,7 +6,10 @@ const defaultState = {
 export default function currentState(state = defaultState, action){
     switch (action.type) {
         case 'RESET':
-            return state
+            return {
+                isActive: false,
+                data: null
+            }
         case 'SET':
             return {
                 isActive: true,

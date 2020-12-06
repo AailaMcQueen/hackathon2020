@@ -12,8 +12,10 @@ class App extends React.Component {
     return (
       <Provider store = {store}>
         <Router>
-          <div className="container-main">
+          <div className="body-main">
             <Navbar></Navbar>
+            <br></br>
+            <br></br>
             <Main></Main>
           </div>
         </Router>
