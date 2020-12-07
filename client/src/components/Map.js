@@ -1,4 +1,5 @@
 import React from "react"
+import MapChart from "./MapChart"
 
 class Map extends React.Component {
     handleReset= (event) => {
@@ -7,6 +8,7 @@ class Map extends React.Component {
     }
     render(){
         const {currentState} = this.props;
+        console.log(this.props)
         if(!currentState.isActive){
             return(
                 <div className="container-fluid text-center justify-content-center">
@@ -18,7 +20,7 @@ class Map extends React.Component {
         }
         return (
             <div>
-                <h1>Data provided!</h1>
+                <MapChart></MapChart>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 const defaultState = {
     isActive: false,
-    data: null
+    formData: null,
+    filesCSV: null
 }
 
 export default function currentState(state = defaultState, action){
@@ -8,12 +9,14 @@ export default function currentState(state = defaultState, action){
         case 'RESET':
             return {
                 isActive: false,
-                data: null
+                formData: null,
+                filesCSV: null
             }
         case 'SET':
             return {
                 isActive: true,
-                data: action.data
+                formData: action.formData,
+                filesCSV: action.filesCSV
             } 
         default:
             return state

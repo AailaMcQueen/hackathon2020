@@ -30,6 +30,7 @@ class Homepage extends Component {
     }; 
     handleSubmit = (event) => {
       event.preventDefault();
+      const filesCSV = [];
       console.log(this.state)
       const formData = new FormData();
       formData.append( 
@@ -43,9 +44,10 @@ class Homepage extends Component {
         this.state.labData.name 
       );
       for(var pair of formData.entries()) {
-        console.log(pair[0]+', '+pair[1]);
+        console.log(pair[1]);
+        filesCSV.push(pair[1]);
       }
-      this.props.fetchData(formData);
+      this.props.fetchData(formData, filesCSV);
       this.props.history.push("/allocation");
     }
     handleReset= (event) => {

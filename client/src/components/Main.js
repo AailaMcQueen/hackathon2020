@@ -22,8 +22,9 @@ const Main = props => {
 }
 
 function mapStateToProps(state){
+    console.log(state);
     return {
-        currentState: state.currentState,
+        currentState: state.currentState
     }
 }
 

@@ -1,8 +1,9 @@
 // import {apiCall} from "./api"
 
-export const setWeb = (data) => ({
+export const setWeb = (formData, filesCSV) => ({
     type: "SET", 
-    data
+    formData,
+    filesCSV
 })
 
 export const resetWeb = () => ({
@@ -15,9 +16,9 @@ export const resetData = () => {
     }
 }
 
-export const fetchData = (formData) => {
+export const fetchData = (formData, filesCSV) => {
     return dispatch => {
-        return dispatch(setWeb(formData))
+        return dispatch(setWeb(formData, filesCSV))
     }
 }
 

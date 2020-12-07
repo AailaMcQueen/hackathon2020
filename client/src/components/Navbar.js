@@ -3,6 +3,9 @@ import {NavLink} from "react-router-dom"
 
 export default class NavbarTest extends React.Component {
     render() {
+        const style = {
+            padding: "15px"
+        }
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <NavLink className="navbar-brand" to="/">Visualization</NavLink>
@@ -13,23 +16,23 @@ export default class NavbarTest extends React.Component {
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                         <li className="nav-item">
-                            <NavLink activeClassName="active" exact className="nav-link" to="/">
-                                Provide Data! 
+                            <NavLink style={style} activeClassName="active" exact className="nav-link" to="/">
+                                Provide Data!
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" exact className="nav-link" to="/allocation">
-                                Allocation 
+                            <NavLink style={style} activeClassName="active" exact className="nav-link" to="/allocation">
+                                Allocation
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" exact className="nav-link" to="/aggregate">
-                                Aggregate 
+                            <NavLink style={style} activeClassName="active" exact className="nav-link" to="/aggregate">
+                                Aggregate
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink activeClassName="active" exact className="nav-link" to="/map">
-                                Map 
+                            <NavLink style={style} activeClassName="active" exact className="nav-link" to="/map">
+                                Map
                             </NavLink>
                         </li>
                     </ul>
