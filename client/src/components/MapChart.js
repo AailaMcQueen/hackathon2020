@@ -36,11 +36,11 @@ const MapChart = ({ setTooltipContent }) => {
   }, [])
 
   return (
-    <svg width={ window.innerWidth*((window.innerWidth < 800)?0.9:0.8) } height={ window.innerHeight*((window.innerHeight < 800)?1:0.8) } viewBox="0 0 800 800">
+    <svg width={ window.innerWidth*((window.innerWidth < 800)?0.9:0.8) } height={ window.innerHeight*((window.innerHeight < 800)?1:0.6) } viewBox="0 0 800 800">
       <g className="districts">
         {
           geographies.map((d,i) => { 
-            const cur = districtsData.find(s => parseInt(s.district_id) === parseInt(i+1)); 
+            const cur = districtsData.find(s => s.district_name.toLowerCase() === d.properties.Dist_Name.toLowerCase()); 
             return (
               <path
                 key={ `path-${ i }` }
@@ -51,10 +51,17 @@ const MapChart = ({ setTooltipContent }) => {
                 strokeWidth={ 1.0 }
                 onMouseEnter={() => {
                   const { district_name, lat, lon, samples } = cur;
-                  setTooltipContent(`${district_name} | Samples: ${samples} | Latitude: ${lat} | Longitude: ${lon}`);
+                  setTooltipContent({
+                    district_name, lat,lon,samples
+                  });
                 }}
                 onMouseLeave={() => {
-                  setTooltipContent("");
+                  setTooltipContent({
+                    district_name: "",
+                    lat: "",
+                    lon: "",
+                    samples: ""
+                  });
                 }}
                 style={{
                   default: {

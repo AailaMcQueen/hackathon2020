@@ -17,7 +17,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Bagalkot",
+                        "Dist_Name": "BAGALKOT",
                         "Dist_Code": "556"
                     },
                     "arcs": [
@@ -59,7 +59,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Bangalore",
+                        "Dist_Name": "BENGALURU URBAN",
                         "Dist_Code": "572"
                     },
                     "arcs": [
@@ -81,7 +81,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Belgaum",
+                        "Dist_Name": "BELAGAVI",
                         "Dist_Code": "555"
                     },
                     "arcs": [
@@ -102,7 +102,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Bellary",
+                        "Dist_Name": "BELLARY",
                         "Dist_Code": "565"
                     },
                     "arcs": [
@@ -124,7 +124,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Bidar",
+                        "Dist_Name": "BIDAR",
                         "Dist_Code": "558"
                     },
                     "arcs": [
@@ -148,7 +148,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Bijapur",
+                        "Dist_Name": "VIJAYAPURA",
                         "Dist_Code": "557"
                     },
                     "arcs": [
@@ -169,7 +169,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Chamrajnagar",
+                        "Dist_Name": "CHAMARAJANAGARA",
                         "Dist_Code": "578"
                     },
                     "arcs": [
@@ -188,7 +188,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Chikmagalur",
+                        "Dist_Name": "CHIKKAMAGALUR",
                         "Dist_Code": "570"
                     },
                     "arcs": [
@@ -210,7 +210,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Chitradurga",
+                        "Dist_Name": "CHITRADURGA",
                         "Dist_Code": "566"
                     },
                     "arcs": [
@@ -232,7 +232,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Dakshina Kannada",
+                        "Dist_Name": "DAKSHIN KANNADA",
                         "Dist_Code": "575"
                     },
                     "arcs": [
@@ -255,7 +255,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Davanagere",
+                        "Dist_Name": "DAVANAGERE",
                         "Dist_Code": "567"
                     },
                     "arcs": [
@@ -277,7 +277,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Dharwad",
+                        "Dist_Name": "DHARWAD",
                         "Dist_Code": "562"
                     },
                     "arcs": [
@@ -296,7 +296,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Gadag",
+                        "Dist_Name": "GADAG",
                         "Dist_Code": "561"
                     },
                     "arcs": [
@@ -317,7 +317,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Gulbarga",
+                        "Dist_Name": "KALABURGI",
                         "Dist_Code": "579"
                     },
                     "arcs": [
@@ -337,7 +337,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Hassan",
+                        "Dist_Name": "HASSAN",
                         "Dist_Code": "574"
                     },
                     "arcs": [
@@ -398,7 +398,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Chikkaballapura",
+                        "Dist_Name": "CHIKKABALLAPUR",
                         "Dist_Code": "582"
                     },
                     "arcs": [
@@ -460,7 +460,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Mysore",
+                        "Dist_Name": "MYSURU",
                         "Dist_Code": "577"
                     },
                     "arcs": [
@@ -633,7 +633,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Uttara Kannada",
+                        "Dist_Name": "UTTARA KANNADA",
                         "Dist_Code": "563"
                     },
                     "arcs": [
@@ -731,7 +731,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Bangalore Rural",
+                        "Dist_Name": "BENGALURU RURAL",
                         "Dist_Code": "583"
                     },
                     "arcs": [
@@ -775,7 +775,7 @@
                         "Country": "India",
                         "State_Name": "Karnataka",
                         "State_Code": "29",
-                        "Dist_Name": "Yadgir",
+                        "Dist_Name": "Yadgiri",
                         "Dist_Code": "580"
                     },
                     "arcs": [
