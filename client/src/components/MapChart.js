@@ -40,7 +40,7 @@ const MapChart = ({ setTooltipContent }) => {
       <g className="districts">
         {
           geographies.map((d,i) => { 
-            const cur = districtsData.find(s => s.district_id == i+1); 
+            const cur = districtsData.find(s => parseInt(s.district_id) === parseInt(i+1)); 
             return (
               <path
                 key={ `path-${ i }` }

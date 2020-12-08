@@ -11,15 +11,15 @@ class Map extends React.Component {
     }
     render(){
         const {currentState} = this.props;
-        // if(!currentState.isActive){
-        //     return(
-        //         <div className="container-fluid text-center justify-content-center">
-        //             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        //             <h1>Provide Data First!</h1>
-        //             <button onClick={this.handleReset} className="btn btn-lg btn-primary">Provide Data!</button>
-        //         </div>
-        //     )
-        // }
+        if(!currentState.isActive){
+            return(
+                <div className="container-fluid text-center justify-content-center">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <h1>Provide Data First!</h1>
+                    <button onClick={this.handleReset} className="btn btn-lg btn-primary">Provide Data!</button>
+                </div>
+            )
+        }
         return (
             <div>
                 <MapSupp ></MapSupp>
