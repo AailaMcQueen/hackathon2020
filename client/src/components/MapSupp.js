@@ -14,9 +14,13 @@ function MapSupp() {
       <MapChart setTooltipContent={setContent} />
       {content.district_name.length > 0 && (
         <ReactTooltip>
-            <h1>{content.district_name}</h1>
-            <p>{content.lon}, {content.lat}</p>
-            <p>Samples: {content.samples}</p>
+            <div className="card bg-transparent border-info mb-3 justify-content-center" style={{margin: "0", padding: "0"}}>
+                <div className="card-body text-info">
+                    <h5 className="card-title">{content.district_name}</h5>
+                    <p className="card-text"><strong>Samples:</strong> {content.samples}</p>
+                </div>
+                <div className="card-footer bg-info">Cords: {content.lon}, {content.lat}</div>
+            </div>
         </ReactTooltip>
       )}
     </div>

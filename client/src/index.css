@@ -17,3 +17,18 @@ svg {
   }
 
 
+.tooltipBox {
+    border: none!important;
+}
+
+.type-dark {
+    background-color: white!important;
+    justify-content: center;
+}
+
+
+path:hover {
+    cursor: pointer;
+    stroke: red;
+    stroke-width: 3;
+}

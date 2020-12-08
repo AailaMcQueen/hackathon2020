@@ -36,7 +36,7 @@ const MapChart = ({ setTooltipContent }) => {
   }, [])
 
   return (
-    <svg width={ window.innerWidth*((window.innerWidth < 800)?0.9:0.8) } height={ window.innerHeight*((window.innerHeight < 800)?1:0.6) } viewBox="0 0 800 800">
+    <svg width={ window.innerWidth*((window.innerWidth < 800)?0.9:0.8) } height={ window.innerHeight*0.6 } viewBox="0 0 800 800">
       <g className="districts">
         {
           geographies.map((d,i) => { 
@@ -62,20 +62,6 @@ const MapChart = ({ setTooltipContent }) => {
                     lon: "",
                     samples: ""
                   });
-                }}
-                style={{
-                  default: {
-                    fill: "#D6D6DA",
-                    outline: "none"
-                  },
-                  hover: {
-                    fill: "#F53",
-                    outline: "none"
-                  },
-                  pressed: {
-                    fill: "#E42",
-                    outline: "none"
-                  }
                 }}
               />
             )}
