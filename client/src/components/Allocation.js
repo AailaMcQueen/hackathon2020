@@ -8,6 +8,7 @@ class Allocation extends React.Component {
     }
     render(){
         const {currentState} = this.props;
+        console.log(currentState);
         if(!currentState.isActive){
             return(
                 <div className="container-fluid text-center justify-content-center">
@@ -17,6 +18,39 @@ class Allocation extends React.Component {
                 </div>
             )
         }
+        const answer=currentState.formData, districts=currentState.filesCSV[0], labs=currentState.filesCSV[1];
+        const table = answer.map((data, i)=> {
+            const dist = districts.find((d)=> 
+                parseInt(data.source) === parseInt(d.district_id)
+            )
+            if(data.transfer_type === 0){
+                let lab, labDist;
+                lab = labs.find((d)=> 
+                    parseInt(data.destination) === parseInt(d.id)
+                )
+                labDist = districts.find((d)=>parseInt(lab.district_id) === parseInt(d.district_id))
+                return (<DistrictComponent 
+                            key={i}
+                            sourceType={"District"} 
+                            name={dist.district_name} 
+                            labAlloted={((lab.lab_type===0)?"Govt. Lab":"Private Lab") +"(Lab ID: "+lab.id+"), "+ labDist.district_name} 
+                            swabsAlloted={data.samples_transferred}
+                        ></DistrictComponent>)
+            }
+            else {
+                let lab;
+                lab = districts.find((d)=> 
+                    parseInt(data.source) === parseInt(d.district_id)
+                )
+                return (<DistrictComponent 
+                            key={i}
+                            sourceType={"District"} 
+                            name={dist.district_name} 
+                            labAlloted={lab.district_name} 
+                            swabsAlloted={data.samples_transferred}
+                        ></DistrictComponent>)
+            }
+        })
         return (
             <div className="table-responsive">
                 <table className="table table-hover">
@@ -24,13 +58,13 @@ class Allocation extends React.Component {
                     <thead>
                         <tr>
                         <th scope="col">Source Type</th>
-                        <th scope="col">Source District</th>
-                        <th scope="col">Destination Lab</th>
+                        <th scope="col">Source</th>
+                        <th scope="col">Destination</th>
                         <th scope="col">Samples Allocated</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <DistrictComponent sourceType={"District"} name={"Jalore"} labAlloted={"Test Lab"} swabsAlloted={400}></DistrictComponent>
+                        {table}
                     </tbody>
                 </table>
             </div>

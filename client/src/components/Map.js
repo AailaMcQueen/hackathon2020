@@ -22,7 +22,7 @@ class Map extends React.Component {
         }
         return (
             <div>
-                <MapSupp ></MapSupp>
+                <MapSupp currentState={currentState}></MapSupp>
             </div>
         )
     }

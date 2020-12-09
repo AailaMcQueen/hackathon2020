@@ -2,27 +2,22 @@ import React, {Component} from "react"
 import {connect} from "react-redux"
 import {fetchData} from "../store/actions/actions"
 import {csv2json} from "csvjson-csv2json"
+import Loader from "./loader";
 
 const labels = ["District Data File!", "Lab Data File!"];
 
 let fileReader, fileReader1;
 class Homepage extends Component { 
     constructor(props){
-      super(props);
+      super(props)
       this.state = {
         districtData: null,
-        labData: null
+        labData: null,
+        flag: 0
       }
-    }
-    
-    fileContent = e => {
-      const content = fileReader.result;
-      let a = csv2json(content, {parseNumbers: true})
-      console.log(a)
     }
 
     onFileChange = event => {
-      console.log(event.target.name);
       let newState = {
         ...this.state
       }
@@ -35,11 +30,15 @@ class Homepage extends Component {
         labels[0] = newState.districtData.name;
       }
       this.setState(newState);
-      console.log(this.state);
     }; 
     handleSubmit = (event) => {
       event.preventDefault();
       const filesCSV = [];
+      let newState = {
+        ...this.state
+      }
+      newState.flag = 1;
+      this.setState(newState)
       fileReader = new FileReader();
       fileReader.onloadend = async (e) => { 
         const content = await fileReader.result
@@ -54,7 +53,6 @@ class Homepage extends Component {
         filesCSV.push(a)
       };
       fileReader1.readAsText(this.state.labData);
-      console.log(filesCSV)
       const formData = new FormData();
       formData.append( 
         "districtData", 
@@ -66,8 +64,9 @@ class Homepage extends Component {
         this.state.labData, 
         this.state.labData.name 
       );
-      this.props.fetchData(formData, filesCSV);
-      this.props.history.push("/allocation");
+      this.props.fetchData(formData, filesCSV).then(()=>{
+        this.props.history.push("/allocation");
+      })
     }
     handleReset= (event) => {
       event.preventDefault();
@@ -79,13 +78,16 @@ class Homepage extends Component {
     // //  axios.post("api/uploadfile", formData); 
     render() { 
       const {currentState} = this.props;
-      return (currentState.isActive)?(
+      if(currentState.isActive)
+      return (
         <div className="container-fluid text-center justify-content-center">
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <h1>Data already provided!</h1>
           <button onClick={this.handleReset} className="btn btn-lg btn-primary">Provide New Data!</button>
         </div>
-      ):( 
+      )
+      else if(this.state.flag===0) 
+      return ( 
         <div className="text-center">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <h1>Homepage</h1> 
@@ -124,8 +126,11 @@ class Homepage extends Component {
                 </div>
               </div>
             </form>
-        </div> 
-      );
+        </div>
+      )
+      else return (
+        <Loader></Loader>
+      )
     } 
   }
 

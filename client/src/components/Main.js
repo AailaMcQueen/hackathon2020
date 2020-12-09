@@ -7,6 +7,7 @@ import Allocation from "./Allocation"
 import Homepage from "./Homepage"
 import {fetchData, resetData} from "../store/actions/actions"
 
+
 const Main = props => {
     const {currentState, fetchData, resetData} = props;
     return (
@@ -22,7 +23,6 @@ const Main = props => {
 }
 
 function mapStateToProps(state){
-    console.log(state);
     return {
         currentState: state.currentState
     }

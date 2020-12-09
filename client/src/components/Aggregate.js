@@ -17,13 +17,31 @@ class Aggregate extends React.Component {
                 </div>
             )
         }
+        const answer=currentState.formData, districts=currentState.filesCSV[0], labs=currentState.filesCSV[1];
+        const table = labs.map((data, i)=> {
+            var allocation=0, backlog=0;
+            let labDist = districts.find((d)=>parseInt(data.district_id) === parseInt(d.district_id))
+            answer.forEach((ans)=>{
+                if(parseInt(ans.destination) === data.id){
+                    allocation+=ans.samples_transferred
+                }
+            })
+            return (<LabComponent 
+                        key={i}
+                        id={data.id} 
+                        capacity={data.capacity} 
+                        name={((data.lab_type===0)?"Govt. Lab":"Private Lab") +", "+ labDist.district_name}
+                        backlog={backlog} 
+                        allocation={allocation}
+                    ></LabComponent>)
+        })
         return (
             <div className="table-responsive">
                 <table className="table table-hover">
                     <caption>Aggregate Data</caption>
                     <thead>
                         <tr>
-                        <th scope="col">S. No.</th>
+                        <th scope="col">Lab ID</th>
                         <th scope="col">Lab Name</th>
                         <th scope="col">Capacity</th>
                         <th scope="col">Allocation</th>
@@ -31,7 +49,7 @@ class Aggregate extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <LabComponent id={1} capacity={400} name={"Test Lab, Jalore"} backlog={20} allocation={400}></LabComponent>
+                        {table}
                     </tbody>
                 </table>
             </div>

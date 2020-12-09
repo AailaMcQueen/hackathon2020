@@ -4,25 +4,44 @@
 import React, { useState, useEffect } from "react"
 import { geoMercator, geoPath } from "d3-geo"
 import { feature } from "topojson-client"
-import {csv} from "d3-fetch"
 
 const projection = geoMercator()
 
 let districtsData = []
 
-const setData = data => {
-  districtsData = data.map((dist) => dist);
+const setData = (data) => {
+  const answer=data.formData, districts=data.filesCSV[0], labs=data.filesCSV[1];
+  districtsData = districts.map((dist) => {
+    let noOfLabs=0, totalCases = 0, casesAllocated=0;
+    answer.forEach((ans)=>{
+      if(ans.transfer_type === 1 && parseInt(ans.destination) === dist.district_id){
+        casesAllocated+=(ans.samples_transferred)
+      }
+      if(parseInt(ans.source) === dist.district_id){
+        totalCases+=(ans.samples_transferred)
+      }
+    })
+    labs.forEach((lab)=>{
+      if(lab.district_id === dist.district_id) noOfLabs++;
+    })
+    return {
+      district_name: dist.district_name,
+      id: dist.district_id,
+      noOfLabs: noOfLabs,
+      totalCases: totalCases,
+      casesAllocated: casesAllocated,
+      lat: dist.lat,
+      lon: dist.lon
+    }
+  })
 }
 
 
 
-const MapChart = ({ setTooltipContent }) => {
+const MapChart = ({ setTooltipContent, currentState }) => {
   const [geographies, setGeographies] = useState([])
-
   useEffect(() => {
-    csv("/districts_data_v0.csv").then(districts => {
-      setData(districts);
-    })
+    setData(currentState);
     fetch("/District_Boundary.json")
       .then(response => {
         if (response.status !== 200) {
@@ -32,8 +51,8 @@ const MapChart = ({ setTooltipContent }) => {
         response.json().then(stateData => {
           setGeographies(feature(stateData, stateData.objects.Karnataka).features)
         })
-      })
-  }, [])
+      })       
+  })
 
   return (
     <svg width={ window.innerWidth*((window.innerWidth < 800)?0.9:0.8) } height={ window.innerHeight*0.6 } viewBox="0 0 800 800">
@@ -46,13 +65,13 @@ const MapChart = ({ setTooltipContent }) => {
                 key={ `path-${ i }` }
                 d={ geoPath().projection(projection)(d) }
                 className="district"
-                fill={ `rgba(138,43,226,${ cur.samples / 1000})` }
+                fill={ `rgba(138,43,226,${ cur.totalCases / 1000})` }
                 stroke="#000000"
                 strokeWidth={ 1.0 }
                 onMouseEnter={() => {
-                  const { district_name, lat, lon, samples } = cur;
+                  const { district_name, lat, lon, noOfLabs, casesAllocated, totalCases } = cur;
                   setTooltipContent({
-                    district_name, lat,lon,samples
+                    district_name, lat,lon,noOfLabs, casesAllocated, totalCases
                   });
                 }}
                 onMouseLeave={() => {
@@ -60,7 +79,9 @@ const MapChart = ({ setTooltipContent }) => {
                     district_name: "",
                     lat: "",
                     lon: "",
-                    samples: ""
+                    noOfLabs: "",
+                    casesAllocated: "",
+                    totalCases: ""
                   });
                 }}
               />
