@@ -1,9 +1,11 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
 import {fetchData} from "../store/actions/actions"
+import {csv2json} from "csvjson-csv2json"
 
 const labels = ["District Data File!", "Lab Data File!"];
-  
+
+let fileReader, fileReader1;
 class Homepage extends Component { 
     constructor(props){
       super(props);
@@ -12,6 +14,13 @@ class Homepage extends Component {
         labData: null
       }
     }
+    
+    fileContent = e => {
+      const content = fileReader.result;
+      let a = csv2json(content, {parseNumbers: true})
+      console.log(a)
+    }
+
     onFileChange = event => {
       console.log(event.target.name);
       let newState = {
@@ -31,7 +40,21 @@ class Homepage extends Component {
     handleSubmit = (event) => {
       event.preventDefault();
       const filesCSV = [];
-      console.log(this.state)
+      fileReader = new FileReader();
+      fileReader.onloadend = async (e) => { 
+        const content = await fileReader.result
+        let a = csv2json(content, {parseNumbers: true})
+        filesCSV.push(a)
+      };
+      fileReader.readAsText(this.state.districtData);
+      fileReader1 = new FileReader();
+      fileReader1.onloadend = async (e) => { 
+        const content = await fileReader1.result
+        let a = csv2json(content, {parseNumbers: true})
+        filesCSV.push(a)
+      };
+      fileReader1.readAsText(this.state.labData);
+      console.log(filesCSV)
       const formData = new FormData();
       formData.append( 
         "districtData", 
@@ -43,10 +66,6 @@ class Homepage extends Component {
         this.state.labData, 
         this.state.labData.name 
       );
-      for(var pair of formData.entries()) {
-        console.log(pair[1]);
-        filesCSV.push(pair[1]);
-      }
       this.props.fetchData(formData, filesCSV);
       this.props.history.push("/allocation");
     }

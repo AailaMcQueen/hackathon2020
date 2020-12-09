@@ -19,7 +19,7 @@ export const resetData = () => {
 export const fetchData = (formData, filesCSV) => {
     return dispatch => {
         axios.post("http://localhost:4000/api/submitdata", formData).then(res => {
-            dispatch(setWeb(res, filesCSV))
+            dispatch(setWeb(res.data, filesCSV))
         })
         .catch(err => {
             console.log(err);
