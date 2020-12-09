@@ -101,7 +101,7 @@ class Homepage extends Component {
               <br></br>
               <div className="form-row align-items-center">
                 <div className="col my-1">
-                  <button className="btn btn-primary">Submit!</button>
+                  <button type = "submit" className="btn btn-primary">Submit!</button>
                 </div>
               </div>
             </form>

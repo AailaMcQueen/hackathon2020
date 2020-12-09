@@ -1,4 +1,4 @@
-// import {apiCall} from "./api"
+import {apiCall} from "./api"
 
 export const setWeb = (formData, filesCSV) => ({
     type: "SET", 
@@ -22,6 +22,6 @@ export const fetchData = (formData, filesCSV) => {
     }
 }
 
-// apiCall("POST", "/api/submitdata", formData)
-//                 .then(res => dispatch(setWeb(res)))
-//                 .catch(err => console.log(err));
+apiCall("POST", "/api/submitdata", formData)
+                .then(res => dispatch(setWeb(res)))
+                .catch(err => console.log(err));
