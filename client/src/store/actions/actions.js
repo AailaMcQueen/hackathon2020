@@ -1,4 +1,4 @@
-import {apiCall} from "./api"
+import axios from "axios"
 
 export const setWeb = (formData, filesCSV) => ({
     type: "SET", 
@@ -18,10 +18,12 @@ export const resetData = () => {
 
 export const fetchData = (formData, filesCSV) => {
     return dispatch => {
-        return dispatch(setWeb(formData, filesCSV))
+        axios.post("http://localhost:4000/api/submitdata", formData).then(res => {
+            dispatch(setWeb(res, filesCSV))
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 }
 
-apiCall("POST", "/api/submitdata", formData)
-                .then(res => dispatch(setWeb(res)))
-                .catch(err => console.log(err));
