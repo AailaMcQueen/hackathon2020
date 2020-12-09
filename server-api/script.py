@@ -148,11 +148,6 @@ for i in district_rem.keys():
     remove_keys(to_rem)
 
 # %% [code]
-output
-
-# %% [code]
-field_names = ['transfer_type', 'source', 'destination', 'samples_transferred', 'remarks'] 
-with open('Output.csv', 'w') as csvfile: 
-    writer = csv.DictWriter(csvfile, fieldnames = field_names) 
-    writer.writeheader() 
-    writer.writerows(output) 
+import json 
+with open('output.json', 'w') as outfile:
+    json.dump(output, outfile)
