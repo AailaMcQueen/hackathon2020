@@ -6,44 +6,13 @@ import { geoMercator, geoPath } from "d3-geo"
 import { feature } from "topojson-client"
 
 const projection = geoMercator()
-let max1=0, max2=0;
-let districtsData = []
-
-const setData = (data) => {
-  const answer=data.formData, districts=data.filesCSV[0], labs=data.filesCSV[1];
-  districtsData = districts.map((dist) => {
-    let noOfLabs=0, totalCases = 0, casesAllocated=0;
-    answer.forEach((ans)=>{
-      if(ans.transfer_type === 1 && parseInt(ans.destination) === dist.district_id){
-        casesAllocated+=(ans.samples_transferred)
-      }
-      if(parseInt(ans.source) === dist.district_id){
-        totalCases+=(ans.samples_transferred)
-      }
-    })
-    if(totalCases > max1) max1 = totalCases;
-    if(totalCases > max2 && totalCases < max1) max2 = totalCases;
-    labs.forEach((lab)=>{
-      if(lab.district_id === dist.district_id) noOfLabs++;
-    })
-    return {
-      district_name: dist.district_name,
-      id: dist.district_id,
-      noOfLabs: noOfLabs,
-      totalCases: totalCases,
-      casesAllocated: casesAllocated,
-      lat: dist.lat,
-      lon: dist.lon
-    }
-  })
-}
 
 
 
-const MapChart = ({ setTooltipContent, currentState }) => {
+
+const MapChart = ({ setTooltipContent, currentState, districtsData, max2 }) => {
   const [geographies, setGeographies] = useState([])
   useEffect(() => {
-    setData(currentState);
     fetch("/District_Boundary.json")
       .then(response => {
         if (response.status !== 200) {
