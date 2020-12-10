@@ -6,7 +6,7 @@ import { geoMercator, geoPath } from "d3-geo"
 import { feature } from "topojson-client"
 
 const projection = geoMercator()
-
+let max1=0, max2=0;
 let districtsData = []
 
 const setData = (data) => {
@@ -21,6 +21,8 @@ const setData = (data) => {
         totalCases+=(ans.samples_transferred)
       }
     })
+    if(totalCases > max1) max1 = totalCases;
+    if(totalCases > max2 && totalCases < max1) max2 = totalCases;
     labs.forEach((lab)=>{
       if(lab.district_id === dist.district_id) noOfLabs++;
     })
@@ -65,7 +67,7 @@ const MapChart = ({ setTooltipContent, currentState }) => {
                 key={ `path-${ i }` }
                 d={ geoPath().projection(projection)(d) }
                 className="district"
-                fill={ `rgba(138,43,226,${ cur.totalCases / 1000})` }
+                fill={ (cur.totalCases <= max2)?`rgba(138,43,226, ${ cur.totalCases / max2})`:`rgba(220,60,60,1)` }
                 stroke="#000000"
                 strokeWidth={ 1.0 }
                 onMouseEnter={() => {

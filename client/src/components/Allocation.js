@@ -8,7 +8,6 @@ class Allocation extends React.Component {
     }
     render(){
         const {currentState} = this.props;
-        console.log(currentState);
         if(!currentState.isActive){
             return(
                 <div className="container-fluid text-center justify-content-center">
@@ -46,7 +45,7 @@ class Allocation extends React.Component {
                             key={i}
                             sourceType={"District"} 
                             name={dist.district_name} 
-                            labAlloted={lab.district_name} 
+                            labAlloted={lab.district_name + "(District HQ)"} 
                             swabsAlloted={data.samples_transferred}
                         ></DistrictComponent>)
             }
