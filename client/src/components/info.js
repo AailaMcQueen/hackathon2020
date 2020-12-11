@@ -1,7 +1,7 @@
 export const Info = () => {
     return (
           <div id="accordion">
-            <div className="card">
+            <div className="card bg-transparent">
               <div className="card-header" id="infoId">
                 <button style={{width: "100%"}} className="btn" data-toggle="collapse" data-target="#infoCollapse" aria-expanded="true" aria-controls="infoCollapse">
                 <h5>How this works?</h5>

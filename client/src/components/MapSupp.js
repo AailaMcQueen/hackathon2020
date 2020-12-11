@@ -48,14 +48,16 @@ function MapSupp({currentState}) {
       <MapChart setTooltipContent={setContent} currentState={currentState} districtsData={districtsData} max2={max2}/>
       {content.district_name.length > 0 && (
         <ReactTooltip>
-            <div className="card bg-transparent border-info mb-3 justify-content-center" style={{margin: "0", padding: "0"}}>
-                <div className="card-body text-info">
+            <div className="card bg-transparent border-secondary justify-content-center" style={{color: "#343a40",margin: "auto",maxWidth: "600px", padding: "0",fontSize: "0.9rem"}}>
+                <div className="card-body">
                     <h5 className="card-title">{content.district_name}</h5>
-                    <p className="card-text"><strong>No. of Labs:</strong> {content.noOfLabs}</p>
-                    <p className="card-text"><strong>Samples allocated from District HQ:</strong> {content.totalCases}</p>
-                    <p className="card-text"><strong>Samples allocated to District HQ(Backlogs):</strong> {content.casesAllocated}</p>
+                    <p className="card-text">
+                      <strong>No. of Labs:</strong> {content.noOfLabs}<br></br>
+                      <strong>Samples allocated from District HQ:</strong> {content.totalCases}<br></br>
+                      <strong>Samples allocated to District HQ(Backlogs):</strong> {content.casesAllocated}<br></br>
+                      <strong>Cords:</strong> {content.lon}, {content.lat}
+                    </p>
                 </div>
-                <div className="card-footer bg-info">Cords: {content.lon}, {content.lat}</div>
             </div>
         </ReactTooltip>
       )}
