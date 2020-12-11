@@ -6,8 +6,8 @@ class DistrictComponent extends React.Component {
         return (
             <tr>
                 <th scope="row">{sourceType}</th>
-                <td>{name}</td>
-                <td>{labAlloted}</td>
+                <td style={{fontSize: "0.9rem"}}>{name}</td>
+                <td style={{fontSize: "0.9rem"}}>{labAlloted}</td>
                 <td>{swabsAlloted}</td>
                 <td>{remarks}</td>
             </tr>
