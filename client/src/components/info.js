@@ -3,14 +3,14 @@ export const Info = () => {
           <div id="accordion">
             <div className="card bg-transparent">
               <div className="card-header" id="infoId">
-                <button style={{width: "100%"}} className="btn" data-toggle="collapse" data-target="#infoCollapse" aria-expanded="true" aria-controls="infoCollapse">
+                <button style={{width: "100%", outline: "none", boxShadow: "0px 0px"}} className="btn" data-toggle="collapse" data-target="#infoCollapse" aria-expanded="true" aria-controls="infoCollapse">
                 <h5>How this works?</h5>
                 </button>
               </div>
 
               <div id="infoCollapse" className="collapse" aria-labelledby="infoId" data-parent="#accordion">
                 <div className="card-body">
-                  <ul>
+                  <ul style={{paddingLeft: "15px"}}>
                     <li>
                       <p>As first input, we provide District Data in .csv file format. Similarly, as second input, we provide Lab Data.</p>
                     </li>

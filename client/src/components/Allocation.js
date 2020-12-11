@@ -53,7 +53,7 @@ class Allocation extends React.Component {
             }
         })
         return (
-            <div style={{fontSize: "0.9rem"}} className="table-responsive">
+            <div  className="table-responsive">
                 <table className="table table-hover">
                     <caption>Allocation Data</caption>
                     <thead>
