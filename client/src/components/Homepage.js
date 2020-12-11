@@ -3,6 +3,7 @@ import {connect} from "react-redux"
 import {fetchData} from "../store/actions/actions"
 import {csv2json} from "csvjson-csv2json"
 import Loader from "./loader";
+import {Info} from "./info"
 
 const labels = ["District Data File!", "Lab Data File!"];
 
@@ -80,52 +81,59 @@ class Homepage extends Component {
       const {currentState} = this.props;
       if(currentState.isActive)
       return (
-        <div className="container-fluid text-center justify-content-center">
+        <div className="container-fluid justify-content-center">
+          <Info></Info>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <br></br>
+          <br></br>
           <h1>Data already provided!</h1>
           <button onClick={this.handleReset} className="btn btn-lg btn-primary">Provide New Data!</button>
         </div>
       )
       else if(this.state.flag===0) 
       return ( 
-        <div className="text-center">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <h1>Homepage</h1> 
-            <form onSubmit={this.handleSubmit}>
-              <div className="input-group mb-3">
-                <div className="custom-file">
-                  <input 
-                      type="file" 
-                      className="form-control custom-file-input" 
-                      id="districtData" 
-                      name="districtData"
-                      onChange={this.onFileChange}
-                      required
-                  ></input>
-                  <label className="custom-file-label" htmlFor="districtData">{labels[0]}</label>
-                </div>
+        <div>
+          <h1>Welcome</h1>
+          <br></br>
+          <Info></Info>
+          <div className="container">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <form onSubmit={this.handleSubmit}>
+            <div className="input-group mb-3">
+              <div className="custom-file">
+                <input 
+                    type="file" 
+                    className="form-control custom-file-input" 
+                    id="districtData" 
+                    name="districtData"
+                    onChange={this.onFileChange}
+                    required
+                ></input>
+                <label className="custom-file-label" htmlFor="districtData">{labels[0]}</label>
               </div>
-              &nbsp;
-              <div className="input-group mb-3">
-                <div className="custom-file">
-                  <input 
-                      type="file" 
-                      className="form-control custom-file-input" 
-                      id="labData" 
-                      name="labData"
-                      onChange={this.onFileChange}
-                      required
-                  ></input>
-                  <label className="custom-file-label" htmlFor="labData">{labels[1]}</label>
-                </div>
+            </div>
+            &nbsp;
+            <div className="input-group mb-3">
+              <div className="custom-file">
+                <input 
+                    type="file" 
+                    className="form-control custom-file-input" 
+                    id="labData" 
+                    name="labData"
+                    onChange={this.onFileChange}
+                    required
+                ></input>
+                <label className="custom-file-label" htmlFor="labData">{labels[1]}</label>
               </div>
-              <br></br>
-              <div className="form-row align-items-center">
-                <div className="col my-1">
-                  <button type = "submit" className="btn btn-primary">Submit!</button>
-                </div>
+            </div>
+            <br></br>
+            <div className="form-row align-items-center">
+              <div className="col my-1">
+                <button type = "submit" className="btn btn-primary">Submit!</button>
               </div>
-            </form>
+            </div>
+          </form>
+          </div>
         </div>
       )
       else return (

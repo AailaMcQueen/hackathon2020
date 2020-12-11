@@ -8,7 +8,6 @@ class Allocation extends React.Component {
     }
     render(){
         const {currentState} = this.props;
-        console.log(currentState);
         if(!currentState.isActive){
             return(
                 <div className="container-fluid text-center justify-content-center">
@@ -35,6 +34,7 @@ class Allocation extends React.Component {
                             name={dist.district_name} 
                             labAlloted={((lab.lab_type===0)?"Govt. Lab":"Private Lab") +"(Lab ID: "+lab.id+"), "+ labDist.district_name} 
                             swabsAlloted={data.samples_transferred}
+                            remarks={"District to Lab"}
                         ></DistrictComponent>)
             }
             else {
@@ -46,8 +46,9 @@ class Allocation extends React.Component {
                             key={i}
                             sourceType={"District"} 
                             name={dist.district_name} 
-                            labAlloted={lab.district_name} 
+                            labAlloted={lab.district_name + "(District HQ)"} 
                             swabsAlloted={data.samples_transferred}
+                            remarks={"District to District"}
                         ></DistrictComponent>)
             }
         })
@@ -61,6 +62,7 @@ class Allocation extends React.Component {
                         <th scope="col">Source</th>
                         <th scope="col">Destination</th>
                         <th scope="col">Samples Allocated</th>
+                        <th scope="col">Transfer Type</th>
                         </tr>
                     </thead>
                     <tbody>
