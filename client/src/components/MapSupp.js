@@ -53,7 +53,7 @@ function MapSupp({currentState}) {
                     <h5 className="card-title">{content.district_name}</h5>
                     <p className="card-text"><strong>No. of Labs:</strong> {content.noOfLabs}</p>
                     <p className="card-text"><strong>Samples allocated from District HQ:</strong> {content.totalCases}</p>
-                    <p className="card-text"><strong>Samples allocated to District HQ:</strong> {content.casesAllocated}</p>
+                    <p className="card-text"><strong>Samples allocated to District HQ(Backlogs):</strong> {content.casesAllocated}</p>
                 </div>
                 <div className="card-footer bg-info">Cords: {content.lon}, {content.lat}</div>
             </div>

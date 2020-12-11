@@ -21,7 +21,7 @@ class Map extends React.Component {
             )
         }
         return (
-            <div>
+            <div style={{overflow: "hidden"}}>
                 <MapSupp currentState={currentState}></MapSupp>
             </div>
         )
