@@ -4,6 +4,10 @@
     font-family: 'Libre Baskerville', sans-serif;
 }
 
+body{
+    background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(52, 58, 64,0.8));
+}
+
 .right-sided-links{
     margin-right: 0;
 }
@@ -23,7 +27,7 @@ svg {
 }
 
 .type-dark {
-    background-color: white!important;
+    background-color: transparent!important;
     justify-content: center;
 }
 

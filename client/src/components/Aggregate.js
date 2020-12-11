@@ -36,7 +36,7 @@ class Aggregate extends React.Component {
                     ></LabComponent>)
         })
         return (
-            <div className="table-responsive">
+            <div style={{fontSize: "0.9rem"}} className="table-responsive">
                 <table className="table table-hover">
                     <caption>Aggregate Data</caption>
                     <thead>

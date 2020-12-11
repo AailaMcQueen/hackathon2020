@@ -36,7 +36,7 @@ const MapChart = ({ setTooltipContent, currentState, districtsData, max2 }) => {
                 key={ `path-${ i }` }
                 d={ geoPath().projection(projection)(d) }
                 className="district"
-                fill={ (cur.totalCases <= max2)?`rgba(33, 37, 41, ${ cur.totalCases / max2})`:`rgba(220,60,60,1)` }
+                fill={ (cur.totalCases <= max2)?`rgba(52, 58, 64, ${ cur.totalCases / max2})`:`rgba(220,60,60,1)` }
                 stroke="#000000"
                 strokeWidth={ 1.0 }
                 onMouseEnter={() => {
