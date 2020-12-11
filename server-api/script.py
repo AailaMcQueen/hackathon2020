@@ -30,15 +30,13 @@ for i in districts:
     for j in i['labs']:
         if district_rem[i['district_id']] <= labs_rem[j['id']]:
             labs_rem[j['id']] -= district_rem[i['district_id']]
-            output.append({'transfer_type': 0, 'source': i['district_id'], 'destination': j['id'], 'samples_transferred': district_rem[i['district_id']], 
-                           'remarks' : f'Transfer {district_rem[i["district_id"]]} swabs from district {i["district_id"]} to lab {j["id"]}'})
+            output.append({'transfer_type': 0, 'source': i['district_id'], 'destination': j['id'], 'samples_transferred': district_rem[i['district_id']]})
             del district_rem[i['district_id']]
             if not labs_rem[j['id']]:
                 del labs_rem[j['id']]
             break
         district_rem[i['district_id']] -= labs_rem[j['id']]
-        output.append({'transfer_type': 0, 'source': i['district_id'], 'destination': j['id'], 'samples_transferred': labs_rem[j['id']], 
-                      'remarks' : f'Transfer {labs_rem[j["id"]]} swabs from district {i["district_id"]} to lab {j["id"]}'})
+        output.append({'transfer_type': 0, 'source': i['district_id'], 'destination': j['id'], 'samples_transferred': labs_rem[j['id']]})
         del labs_rem[j['id']]
 
 from math import sin, cos, sqrt, atan2, radians
@@ -122,17 +120,23 @@ for i in district_rem.keys():
     for j in labs_used:
         j = str(j)
         x = min(district_rem[i], labs_rem[j])
-        district_rem[i] -= x;
-        labs_rem[j] -= x;
-        output.append({'transfer_type': 0, 'source': i, 'destination': j, 'samples_transferred': x, 
-                      'remarks': f'Transfer {x} swabs from district {i} to lab {j}'})
+        district_rem[i] -= x
+        labs_rem[j] -= x
+        output.append({'transfer_type': 0, 'source': i, 'destination': j, 'samples_transferred': x})
         if not labs_rem[j]:
             to_rem.append(int(j))
     if district_rem[i]:
-        output.append({'transfer_type': 1, 'source': i, 'destination': i, 'samples_transferred': district_rem[i], 
-                      'remarks': f'Keep a backlog of {district_rem[i]} samples in district {i}'})
+        output.append({'transfer_type': 1, 'source': i, 'destination': i, 'samples_transferred': district_rem[i]})
     remove_keys(to_rem)
 
+#Create JSON output
 import json 
 with open('output.json', 'w') as outfile:
     json.dump(output, outfile)
+
+#Create CSV output
+field_names = ['transfer_type', 'source', 'destination', 'samples_transferred'] 
+with open('Output.csv', 'w') as csvfile: 
+    writer = csv.DictWriter(csvfile, fieldnames = field_names) 
+    writer.writeheader() 
+    writer.writerows(output) 
